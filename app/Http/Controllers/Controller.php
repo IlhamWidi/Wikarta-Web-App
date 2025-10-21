@@ -31,9 +31,9 @@ class Controller extends BaseController
                 $roleAccess = RoleAccessMenu::where('user_id', $user->id)->first();
                 $allowedMenuIds = [];
                 if ($roleAccess && is_array($roleAccess->menu_access)) {
-                    $allowedMenuIds = array_keys($roleAccess->menu_access);
+                    $allowedMenuIds = $roleAccess->menu_access;
                 } elseif ($roleAccess && is_string($roleAccess->menu_access)) {
-                    $allowedMenuIds = array_keys(json_decode($roleAccess->menu_access, true) ?? []);
+                    $allowedMenuIds = json_decode($roleAccess->menu_access, true) ?? [];
                 }
 
                 // Ambil menu yang diizinkan

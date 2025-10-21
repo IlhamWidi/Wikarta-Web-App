@@ -46,6 +46,20 @@
                 background: #f8f9fa;
             }
 
+            .shortcut-card-icon {
+                width: 100%;
+                height: 70px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                background: #f8f9fa;
+                color: #16a34a;
+            }
+
+            .shortcut-card-icon i {
+                font-size: 1.75rem;
+            }
+
             .shortcut-card-title {
                 font-size: 0.85rem !important;
                 white-space: nowrap;
@@ -94,6 +108,20 @@
 
             .shortcut-card-title {
                 font-size: 1rem !important;
+            }
+
+            .shortcut-card-icon {
+                width: 100%;
+                height: 100px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                background: #f8f9fa;
+                color: #16a34a;
+            }
+
+            .shortcut-card-icon i {
+                font-size: 2.25rem;
             }
         }
     </style>
@@ -196,6 +224,10 @@
                                                         @if($child->photo)
                                                             <img class="card-img-top img-fluid shortcut-card-img"
                                                                 src="{{ asset($child->photo) }}" alt="Card image cap">
+                                                        @else
+                                                            <div class="shortcut-card-icon">
+                                                                <i class="{{ $child->icon ?? 'ri-apps-line' }}" aria-hidden="true"></i>
+                                                            </div>
                                                         @endif
                                                         <div class="card-body p-2">
                                                             <h4 class="card-title mb-2 shortcut-card-title">{{ $child->name }}</h4>

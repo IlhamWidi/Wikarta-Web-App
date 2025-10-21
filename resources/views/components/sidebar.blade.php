@@ -27,11 +27,6 @@
             <div id="two-column-menu"></div>
             <ul class="navbar-nav" id="navbar-nav">
                 <li class="menu-title"><span data-key="t-menu">Menu</span></li>
-                <a class="nav-link menu-link" href="{{ route('home') }}" role="button" aria-expanded="false"
-                    aria-controls="sidebarDashboards" style="font-size: 14px;">
-                    <i class="bx bx-desktop"></i> <span data-key="t-dashboards">Dashboards</span>
-                </a>
-
                 @foreach($menus->where('parent_id', null) as $parent)
                     <li class="nav-item">
                         @if($menus->where('parent_id', $parent->id)->count())
