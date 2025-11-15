@@ -1,0 +1,185 @@
+
+Deskripsi Proyek Wikarta Web App — Penjelasan Lengkap & Terstruktur
+
+1. Gambaran Umum Proyek
+1.1 Identitas & Konteks
+- Nama Aplikasi: Wikarta Web App (Panel Admin)
+- Tujuan Utama: Mengelola operasi internal penyedia layanan (provider) Wikarta: pelanggan, paket, penagihan, pembayaran, refund/void, dunning, serta audit/keamanan.
+- Stack Inti:
+  - Backend: Laravel (PHP) + Blade (server-side rendering)
+  - Frontend: HTML, JavaScript, CSS, TypeScript (progressive enhancement)
+  - Data: MySQL/PostgreSQL (relasional), Redis (queue)
+  - Integrasi: Midtrans (VA/QRIS)
+  - Observabilitas/Pekerjaan Asinkron: Laravel Horizon (queue), Scheduler (cron)
+
+> Komposisi kode (indikatif): HTML ~62,1%, JavaScript ~26,2%, CSS ~6,2%, TypeScript ~1,4%, Blade ~2,4%, PHP ~1,5% → arsitektur frontend-centric dengan SSR backend.
+
+1.2 Masalah Inti yang Diselesaikan
+1) Hak akses belum ketat (least-privilege/SoD belum konsisten).
+2) Sinkronisasi pembayaran belum otomatis (rawan mismatch status internal ↔ Midtrans).
+3) Webhook: risiko duplikasi/terlambat/gagal → perlu signature verification, idempotensi, retry/backoff.
+4) Rekonsiliasi: butuh job terjadwal untuk “event terlewat/unknown”.
+5) Refund/Void: perlu workflow persetujuan & audit trail yang terdokumentasi.
+6) Dunning: perlu otomatis, terukur (SLA), dan tercatat.
+7) Keamanan & Audit: standar WSTG/ISSAF, logging terstruktur, jejak perubahan entitas sensitif.
+
+1.3 Sasaran (KPI/Indikator Keberhasilan)
+- Mismatch status invoice vs Midtrans ≤ 0,5%/bulan
+- p95 webhook→update < 5 detik
+- SLA dunning ≥ 99%
+- Uji otorisasi lulus 100% (tanpa privilege escalation)
+- SUS ≥ 80
+
+2. Pemangku Kepentingan & Peran
+2.1 Peran Internal (RBAC)
+- SUPERUSER: administrasi tertinggi (setup/emergency), bukan operasi harian.
+- Keuangan: invoice, rekonsiliasi, verifikasi pembayaran, refund/void, laporan.
+- Marketing: pelanggan, paket, promosi, insight penagihan (read-only relevan).
+- Teknisi: akses data untuk dukungan teknis (tanpa tindakan finansial).
+2.2 Prinsip Akses
+- Least-Privilege: izin minimum per peran.
+- Separation of Duties (SoD): tugas risiko tinggi dipisah antar peran.
+
+3. Lingkup Fungsional (Functional Specification)
+3.1 Modul Utama
+- Manajemen Pelanggan (Customers): CRUD, pencarian, relasi ke paket.
+- Manajemen Paket (Packages): CRUD (nama, harga, periode, deskripsi).
+- Penagihan & Invoice: generate invoice, due date, pajak/biaya; state DRAFT→ISSUED→PENDING→PAID/EXPIRED/VOID/REFUND.
+- Integrasi Pembayaran (Midtrans): create transaction (order_id unik), VA/QRIS, status mapping.
+- Webhook Processor: terima notifikasi; signature verification, idempotensi, retry/backoff.
+- Rekonsiliasi Terjadwal: job harian untuk pending/unknown; kurangi mismatch; laporan koreksi.
+- Refund/Void Workflow: permintaan→verifikasi→approval berjenjang→eksekusi API→update status→audit trail.
+- Dunning & Notifikasi: T-7/T-3/T-1/T+3 via Email/WhatsApp/SMS (queue, SLA, retry).
+- Audit Trail & Logging: catat perubahan entitas sensitif; logging JSON terstruktur.
+- Laporan & Dashboard: KPI, aging invoice, performa dunning, log keamanan ringkas.
+3.2 Non-Functional Requirements (NFR)
+- Keamanan: WSTG/ISSAF, JWT best practice, headers keamanan (HSTS/CSP), CSRF, rate-limit, input validation.
+- Kinerja: p95 webhook→update < 5 detik; query efisien; cache/queue.
+- Reliability: idempotent event; retry/backoff; monitoring queue; dead-letter.
+- Auditability: audit trail komprehensif; traceability event→aksi.
+- Usability: SUS ≥ 80.
+- Maintainability: service/repository, migrasi DB, standar coding/linters.
+- Scalability: scale web & worker, DB tuning (indexing, partitioning bila perlu).
+
+4. Arsitektur & Komponen Teknis
+4.1 Pola & Layer
+- MVC (Laravel) + Service/Repository: Controller (HTTP), Service (logika bisnis), Repository/Model (Eloquent), Jobs/Listeners (webhook/dunning/rekonsiliasi), Policies/Middleware (izin).
+4.2 Integrasi Midtrans (Garis Besar)
+- Create Transaction: dari invoice → API charge/transaction; simpan order_id, gross_amount, payment_type.
+- Webhook Endpoint:
+  1) Signature Verification (server-side).
+  2) Idempotensi: tabel webhook_events dengan event key/order_id+status; abaikan duplikat.
+  3) Mapping Status: update invoice/payments sesuai status Midtrans (pending/settlement/expire/cancel/refund).
+  4) Transaksi DB: update konsisten; audit log; trigger notifikasi/rekonsiliasi.
+- Rekonsiliasi Terjadwal: cron harian; tarik status final dari API untuk entri pending/unknown; perbaiki mismatch; laporan.
+> Catatan signature: ikuti formula resmi Midtrans terkini; server key rahasia; verifikasi konstan-time bila memungkinkan.
+4.3 RBAC & SoD
+- spatie/laravel-permission (role/permission), Policy, Middleware role/permission.
+- Contoh SoD: Keuangan post payment/rekonsiliasi tapi approval refund by supervisor; Teknisi read-only finansial; Marketing kelola pelanggan/paket tanpa ubah status pembayaran.
+4.4 Data Model (Ringkas ERD)
+- users; roles/permissions (+ pivot); customers; packages; invoices; payments; webhook_events; audit_logs; notification_jobs.
+- Indeks: invoices(order_id), payments(invoice_id), webhook_events(order_id,event_key unique).
+- FK constraints, soft delete untuk entitas tertentu.
+4.5 Alur Inti
+- Pembuatan & Pembayaran Invoice: create invoice→create transaction→pelanggan bayar→webhook→verify signature→idempotensi→update status→audit→notifikasi.
+- Rekonsiliasi Harian: pilih pending/unknown→cek API Midtrans→update→ringkas mismatch.
+- Refund/Void: request→verifikasi→approval→API→update→audit log.
+- Dunning: jadwal T-7/T-3/T-1/T+3; queue; SLA; retry; nada pesan bertahap.
+
+5. Keamanan & Kepatuhan
+5.1 Standar & Praktik
+- OWASP WSTG v4.2 & ISSAF; Laravel Auth/JWT (TTL singkat, cookie HttpOnly/SameSite); CSRF; validasi input; secure headers (HSTS, CSP); rate-limit; secrets di ENV; TLS/HTTPS; logging tanpa secrets; audit trail aksi sensitif.
+5.2 Idempotensi & Retry
+- Idempotency Key: kombinasi order_id + transaction_status (+ timestamp/settlement_time jika tersedia).
+- webhook_events: simpan hash/payload & status; cegah pemrosesan ganda.
+- Retry/backoff: exponential; dead-letter untuk kegagalan berulang.
+5.3 Privasi & Data Sensitif
+- Minimalkan penyimpanan data pembayaran; gunakan provider_ref/token; masking pada log; patuhi regulasi lokal.
+
+6. Kinerja, Skalabilitas, Ketersediaan
+6.1 Target Kinerja
+- p95 webhook→update < 5 detik; latensi halaman admin < 1–2 detik.
+6.2 Skalabilitas
+- Pisahkan web & queue worker; autoscale worker; DB indexing; cache Redis.
+6.3 Ketersediaan & Pemulihan
+- Backup DB; uji restore; DR runbook; health/readiness probe; alerting.
+
+7. Antarmuka & UX (Admin)
+- Dashboard KPI; Customers; Packages; Invoices; Payments; Reconciliation; Refund/Void; Notifications; Audit Logs; RBAC Management.
+- Usability: konsisten, pesan validasi jelas, aksesibilitas dasar; uji SUS (target ≥ 80).
+
+8. Desain API/Endpoint (Ringkasan, opsional)
+- POST /api/invoices/{id}/transactions
+- POST /api/webhooks/midtrans
+- POST /api/invoices/{id}/refund
+- POST /api/invoices/{id}/void
+- POST /api/reconcile
+- GET  /api/audit-logs?entity=invoice&id=…
+(semua dibatasi policy/permission; logging & rate-limit pada endpoint publik)
+
+9. Skema Notifikasi (Dunning)
+- Jadwal: T-7 (ramah) → T-3 (tegas ringan) → T-1 (terakhir) → T+3 (tindak lanjut).
+- Kanal: Email → WhatsApp → SMS (fallback).
+- Queue: retry; rekam delivery success; tampilkan SLA di dashboard.
+
+10. Logging, Audit, Monitoring
+- Logging JSON; trace_id; redaksi sensitif.
+- Audit Trail: entity-centric; before/after; actor/time/action.
+- Monitoring & Alert: queue depth, job failures, webhook error rate, hasil rekonsiliasi; alert saat ambang terlampaui.
+
+11. Pengujian & QA
+- Fungsional: CRUD, state machine invoice, izin per role, refund/void.
+- Integrasi: webhook valid/invalid signature, duplikasi, out-of-order; rekonsiliasi mass update.
+- Keamanan: ZAP baseline + WSTG (auth bypass, CSRF, XSS, SQLi, SSRF, misconfig); remediation & re-scan.
+- Kinerja: p95 webhook→update pada beban 100–500 event/jam; retry impact.
+- Usability: SUS 8–15 responden; interpretasi & tindak lanjut.
+
+12. CI/CD, Migrasi, Konfigurasi
+- CI: lint, test, build.
+- CD: deploy staging → smoke test → production.
+- Migrasi DB: migration/seed versi; rollback aman.
+- ENV: MIDTRANS_SERVER_KEY, MIDTRANS_CLIENT_KEY, QUEUE_CONNECTION, REDIS_*, MAIL_*/WA_GATEWAY_*, dll.
+- Feature Flags: aktif/nonaktif modul sesuai fase.
+
+13. Roadmap Implementasi
+- Fase 1: Fondasi & RBAC.
+- Fase 2: Invoice & Integrasi Midtrans (webhook + signature + idempotensi + retry).
+- Fase 3: Rekonsiliasi & Dunning (SLA, dashboard).
+- Fase 4: Refund/Void & Hardening (WSTG/ISSAF, ZAP).
+- Fase 5: Optimalisasi & Laporan (performance tuning, UX, laporan bisnis).
+
+14. Risiko & Mitigasi (contoh)
+- Webhook gagal/terlambat → Retry/backoff, idempotensi, rekonsiliasi.
+- Privilege escalation → RBAC ketat, SoD, policy/middleware, audit role change.
+- Ketergantungan eksternal → Graceful degradation, fallback channel, queue.
+- Misconfig secret → ENV terpisah, secret rotation.
+- Beban puncak → Autoscale worker, DB indexing, queue tuning.
+
+15. Kriteria Penerimaan (Acceptance)
+- Alur inti berjalan (invoice→bayar→webhook→update; refund/void; dunning).
+- Keamanan: High=0; Medium ditangani; Low terdokumentasi.
+- Kinerja: p95 webhook→update < 5 detik.
+- Audit: aksi sensitif terlacak.
+- Usability: SUS ≥ 80.
+
+16. Checklist Implementatif
+- Struktur Laravel (Controllers/Policies/Services/Repositories/Jobs/Events).
+- RBAC: role/permission; seed; uji otorisasi (+/–).
+- Midtrans: ENV keys; create transaction; webhook route; signature verify; idempotensi.
+- DB: migrasi tabel inti (invoices, payments, webhook_events, audit_logs).
+- Queue: Redis + Horizon; retry/backoff; dead-letter.
+- Scheduler: rekonsiliasi harian; laporan mismatch.
+- Refund/Void: form + approval + audit + eksekusi API.
+- Dunning: penjadwalan & kanal; SLA; pelaporan.
+- Logging/Audit: JSON, redaksi sensitif, trace_id.
+- Testing: fungsional, integrasi webhook, keamanan, kinerja, SUS.
+- Dokumentasi: runbook insiden & panduan operasional.
+
+17. Penutup
+Wikarta Web App memadukan kontrol akses ketat (RBAC + SoD), integrasi Midtrans andal (signature, idempotensi, retry/backoff, rekonsiliasi), workflow refund/void auditable, dan dunning otomatis; dilapisi hardening keamanan serta audit trail komprehensif. Dengan KPI terukur & pengujian disiplin, artefak ini menertibkan operasional penagihan, meningkatkan akurasi transaksi, memperkuat kepatuhan, dan mengurangi risiko di lingkungan penyedia layanan (provider).
+
+Lampiran Ringkas (Opsional)
+- ENV contoh: MIDTRANS_SERVER_KEY=…; MIDTRANS_CLIENT_KEY=…; QUEUE_CONNECTION=redis; REDIS_HOST=…
+- Mapping status: settlement→PAID; expire→EXPIRED; cancel→VOID; refund→REFUND.
+- Ide Idempotency Key: sha256(order_id + transaction_status + settlement_time?).
+- Event webhook: received→signature_verified→idempotency_checked→updated→audited→notified.
