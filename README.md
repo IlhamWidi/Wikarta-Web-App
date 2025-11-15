@@ -1,262 +1,155 @@
 <div align="center">
 
-# 🌐 Wikarta Provider Management System
+# Wikarta Provider
 
-<p align="center">
-  <img src="https://img.shields.io/badge/Laravel-12.37.0-FF2D20?style=for-the-badge&logo=laravel&logoColor=white" alt="Laravel">
-  <img src="https://img.shields.io/badge/React-19.2.0-61DAFB?style=for-the-badge&logo=react&logoColor=black" alt="React">
-  <img src="https://img.shields.io/badge/PHP-8.4.8-777BB4?style=for-the-badge&logo=php&logoColor=white" alt="PHP">
-  <img src="https://img.shields.io/badge/MySQL-8.0-4479A1?style=for-the-badge&logo=mysql&logoColor=white" alt="MySQL">
-  <img src="https://img.shields.io/badge/Vite-7.2.2-646CFF?style=for-the-badge&logo=vite&logoColor=white" alt="Vite">
-</p>
+**Modern ISP Management System**
 
-<p align="center">
-  <img src="https://img.shields.io/badge/Status-Production%20Ready-success?style=flat-square" alt="Status">
-  <img src="https://img.shields.io/badge/License-MIT-blue?style=flat-square" alt="License">
-  <img src="https://img.shields.io/badge/Maintained-Yes-green?style=flat-square" alt="Maintained">
-  <img src="https://img.shields.io/badge/PRs-Welcome-brightgreen?style=flat-square" alt="PRs Welcome">
-</p>
+[![Laravel](https://img.shields.io/badge/Laravel-12.37-FF2D20?logo=laravel)](https://laravel.com)
+[![React](https://img.shields.io/badge/React-19.2-61DAFB?logo=react)](https://react.dev)
+[![License](https://img.shields.io/badge/License-MIT-blue)](LICENSE)
 
-### 💼 Sistem Manajemen Internet Service Provider yang Modern & Powerful
+Sistem manajemen lengkap untuk Internet Service Provider dengan otomasi WhatsApp billing notifications
 
-*Kelola pelanggan, invoice, pembayaran, dan tiket support dengan antarmuka yang indah dan fitur otomatis yang canggih*
-
-[✨ Features](#-features) • [🚀 Quick Start](#-quick-start) • [📚 Documentation](#-documentation) • [🤝 Contributing](#-contributing)
-
----
+[Demo](#) · [Documentation](#documentation) · [Report Bug](https://github.com/IlhamWidi/Real-Wikarta-/issues)
 
 </div>
 
-## 📖 Tentang Projek
+---
 
-**Wikarta Provider** adalah sistem manajemen lengkap untuk Internet Service Provider (ISP) yang dibangun dengan teknologi terkini. Sistem ini menggabungkan kekuatan Laravel sebagai backend dengan keindahan React untuk frontend, menghasilkan aplikasi yang cepat, responsif, dan mudah digunakan.
+## Overview
 
-### 🎯 Tujuan
+Wikarta Provider adalah aplikasi full-stack untuk mengelola operasional ISP, dari customer management hingga automated billing dengan WhatsApp integration.
 
-- ✅ Mempermudah pengelolaan data pelanggan ISP
-- ✅ Otomasi proses billing dan payment tracking
-- ✅ Notifikasi otomatis jatuh tempo via WhatsApp
-- ✅ Manajemen tiket support yang efisien
-- ✅ Dashboard analytics real-time
-- ✅ Role-based access control (Admin/Superadmin)
+**Key Features:**
+- 👥 Customer & subscription management
+- 💰 Invoice & payment tracking
+- 📱 WhatsApp dunning notifications (4-stage automated)
+- 🎫 Support ticket system
+- 📊 Real-time analytics dashboard
+- 🔐 Role-based access control
+
+**Tech Stack:** Laravel 12 · React 19 · MySQL · Tailwind CSS · Fonnte API
+
 
 ---
 
-## ✨ Features
-
-<table>
-<tr>
-<td width="50%">
-
-### 🎨 **Modern UI/UX**
-- Glassmorphism design
-- Smooth animations (Framer Motion)
-- Dark mode ready
-- Responsive mobile-first
-- Toast notifications
-- Loading skeletons
-
-</td>
-<td width="50%">
-
-### 🔐 **Authentication & Security**
-- Laravel Sanctum API tokens
-- Role-based permissions (Spatie)
-- Password hashing (Bcrypt)
-- CSRF protection
-- Secure session management
-
-</td>
-</tr>
-<tr>
-<td>
-
-### 👥 **Customer Management**
-- CRUD operations
-- Paket internet assignment
-- Payment history tracking
-- Customer status monitoring
-- Search & filter functionality
-
-</td>
-<td>
-
-### 💰 **Billing & Invoicing**
-- Auto-generate invoices
-- Multiple payment status
-- Payment gateway integration ready
-- Invoice PDF export
-- Payment history logs
-
-</td>
-</tr>
-<tr>
-<td>
-
-### 📱 **WhatsApp Integration**
-- Automated dunning notifications
-- 4-stage reminder system:
-  - T-7: 7 hari sebelum jatuh tempo
-  - T-3: 3 hari sebelum jatuh tempo
-  - T-1: 1 hari sebelum jatuh tempo
-  - T+3: 3 hari setelah jatuh tempo
-- Custom message templates
-- Fonnte API integration
-
-</td>
-<td>
-
-### 🎫 **Ticket System**
-- Support ticket management
-- Priority levels
-- Status tracking
-- Customer-admin communication
-- Ticket history
-
-</td>
-</tr>
-<tr>
-<td>
-
-### 📊 **Dashboard Analytics**
-- Real-time statistics
-- Revenue tracking
-- Customer growth charts
-- Payment status overview
-- Quick action buttons
-
-</td>
-<td>
-
-### ⚙️ **Task Automation**
-- Laravel Task Scheduler
-- Queue jobs (Database driver)
-- Auto email/WhatsApp notifications
-- Scheduled dunning runs
-- Background job processing
-
-</td>
-</tr>
-</table>
-
----
-
-## 🛠️ Tech Stack
-
-### Backend
-```
-🔹 Laravel 12.37.0      - PHP framework terbaik untuk web artisans
-🔹 Laravel Sanctum      - API authentication dengan token
-🔹 Spatie Permission    - Role & permission management
-🔹 MySQL 8.0.30         - Reliable relational database
-🔹 Queue System         - Background job processing
-🔹 Task Scheduler       - Automated cron jobs
-```
-
-### Frontend
-```
-🔹 React 19.2.0         - Modern JavaScript library
-🔹 Vite 7.2.2          - Lightning fast build tool
-🔹 Tailwind CSS 4.1.17  - Utility-first CSS framework
-🔹 Framer Motion       - Production-ready animations
-🔹 React Router        - Client-side routing
-🔹 React Hot Toast     - Beautiful toast notifications
-🔹 Axios               - Promise-based HTTP client
-```
-
-### Development Tools
-```
-🔹 Composer            - PHP dependency manager
-🔹 NPM                 - Node package manager
-🔹 Laragon             - Portable development environment
-🔹 Git                 - Version control
-```
-
-### External Services
-```
-🔹 Fonnte API          - WhatsApp messaging gateway
-🔹 Gmail SMTP          - Email notifications (optional)
-```
-
----
-
-## 🚀 Quick Start
+## Quick Start
 
 ### Prerequisites
-
-Pastikan sudah terinstall:
-- **PHP** >= 8.2
-- **Composer** >= 2.0
-- **Node.js** >= 18.0
-- **MySQL** >= 8.0
-- **Git**
+- PHP ≥ 8.2
+- Composer
+- Node.js ≥ 18
+- MySQL ≥ 8.0
 
 ### Installation
 
 ```bash
-# 1. Clone repository
-git clone https://github.com/ilhamwidi/wikarta-provider.git
-cd wikarta-provider
+# Clone repository
+git clone https://github.com/IlhamWidi/Real-Wikarta-.git
+cd Real-Wikarta-
 
-# 2. Install PHP dependencies
+# Install dependencies
 composer install
-
-# 3. Install JavaScript dependencies
 npm install
 
-# 4. Copy environment file
+# Setup environment
 cp .env.example .env
-
-# 5. Generate application key
 php artisan key:generate
 
-# 6. Configure database (.env file)
-DB_CONNECTION=mysql
-DB_HOST=127.0.0.1
-DB_PORT=3306
+# Configure database in .env
 DB_DATABASE=agusprovider
 DB_USERNAME=root
 DB_PASSWORD=
 
-# 7. Run migrations & seeders
+# Run migrations
 php artisan migrate --seed
 
-# 8. Configure timezone & queue
-APP_TIMEZONE=Asia/Jakarta
-QUEUE_CONNECTION=database
-
-# 9. Configure WhatsApp (Optional - Fonnte)
-FONNTE_TOKEN=your_fonnte_token_here
-FONNTE_PHONE=628xxxxxxxxxx
-
-# 10. Build frontend assets
-npm run build
-# atau untuk development:
+# Build assets
 npm run dev
-```
 
-### Running the Application
-
-```bash
-# Terminal 1 - Laravel Server
+# Start server
 php artisan serve
-
-# Terminal 2 - Queue Worker (untuk background jobs)
-php artisan queue:work --tries=3
-
-# Terminal 3 - Vite Dev Server (untuk development)
-npm run dev
 ```
 
-Buka browser: **http://localhost:8000**
+**Default credentials:** `admin@agusprovider.com` / `admin123`
 
-### Default Login
+---
+
+## Configuration
+
+### WhatsApp Notifications
+Update `.env` with your Fonnte credentials:
+```env
+FONNTE_TOKEN=your_token
+FONNTE_PHONE=628xxxxxxxxxx
 ```
-Email: admin@agusprovider.com
-Password: admin123
+
+### Task Scheduler
+**Windows:**
+```bash
+schtasks /create /tn "Wikarta Scheduler" /tr "php C:\path\to\artisan schedule:run" /sc minute
+```
+
+**Linux/Mac:**
+```bash
+* * * * * cd /path/to/project && php artisan schedule:run >> /dev/null 2>&1
 ```
 
 ---
+
+## Documentation
+
+### API Endpoints
+```
+Authentication
+POST   /api/auth/login
+GET    /api/auth/user
+POST   /api/auth/logout
+
+Customers
+GET    /api/customers
+POST   /api/customers
+PUT    /api/customers/{id}
+DELETE /api/customers/{id}
+
+Invoices
+GET    /api/invoices
+POST   /api/invoices
+PUT    /api/invoices/{id}
+
+Payments
+POST   /api/payments
+GET    /api/payments/{id}
+
+Tickets
+GET    /api/tickets
+POST   /api/tickets
+PUT    /api/tickets/{id}
+```
+
+Full API documentation: [Postman Collection](docs/api-collection.json)
+
+---
+
+## License
+
+MIT License - see [LICENSE](LICENSE) file
+
+---
+
+## Support
+
+- Email: hendrahams22@gmail.com
+- WhatsApp: [+62 881 0106 6906](https://wa.me/6288101066906)
+- Issues: [GitHub Issues](https://github.com/IlhamWidi/Real-Wikarta-/issues)
+
+---
+
+<div align="center">
+
+Made with ❤️ by **Wikarta Development Team**
+
+</div>
 
 ## 📋 Task Scheduler Setup
 
@@ -666,5 +559,6 @@ If you discover a security vulnerability within Laravel, please send an e-mail t
 ![Footer](https://capsule-render.vercel.app/api?type=waving&color=gradient&height=100&section=footer)
 
 </div>
-#   R e a l - W i k a r t a -  
+#   R e a l - W i k a r t a - 
+ 
  
