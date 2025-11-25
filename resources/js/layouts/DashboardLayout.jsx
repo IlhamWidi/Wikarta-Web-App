@@ -59,7 +59,7 @@ export default function DashboardLayout({ children }) {
             <aside className="w-64 bg-gradient-to-b from-blue-900 to-purple-900 text-white fixed h-full overflow-y-auto">
                 {/* Logo */}
                 <div className="p-6 border-b border-white/20">
-                    <h1 className="text-2xl font-bold">Agus Provider</h1>
+                    <h1 className="text-2xl font-bold">Wikarta</h1>
                     <p className="text-sm text-blue-200 mt-1">Admin Dashboard</p>
                 </div>
 

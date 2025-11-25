@@ -27,7 +27,7 @@ export const useAuthStore = create(
             })),
         }),
         {
-            name: 'agus-provider-auth',
+            name: 'wikarta-auth',
         }
     )
 );

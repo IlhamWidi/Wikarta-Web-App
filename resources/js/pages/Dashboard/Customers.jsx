@@ -138,7 +138,7 @@ export default function Customers() {
                     {/* Header */}
                     <div className="mb-8">
                         <h1 className="text-3xl font-bold text-gray-900 mb-2">Customers</h1>
-                        <p className="text-gray-600">Kelola data pelanggan Agus Provider</p>
+                        <p className="text-gray-600">Kelola data pelanggan Wikarta</p>
                     </div>
 
                 {/* Filters & Actions */}

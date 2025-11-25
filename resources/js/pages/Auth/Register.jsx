@@ -59,7 +59,7 @@ export default function Register() {
                 <div className="bg-white/10 backdrop-blur-lg rounded-2xl p-8 shadow-2xl border border-white/20">
                     <div className="text-center mb-8">
                         <h1 className="text-4xl font-bold text-white mb-2">Daftar Akun</h1>
-                        <p className="text-indigo-100">Gabung ke Agus Provider untuk kelola pelanggan & pembayaran.</p>
+                        <p className="text-indigo-100">Gabung ke Wikarta untuk kelola pelanggan & pembayaran.</p>
                     </div>
 
                     {generalError && (

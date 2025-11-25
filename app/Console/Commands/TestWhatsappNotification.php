@@ -14,7 +14,7 @@ class TestWhatsappNotification extends Command
     public function handle(NotificationSender $sender): int
     {
         $phone = $this->argument('phone');
-        $message = $this->argument('message') ?? 'Test pesan dari AgusProvider! 🚀';
+        $message = $this->argument('message') ?? 'Test pesan dari Wikarta! 🚀';
 
         // Anti-spam protection: Confirm before sending
         if (!$this->confirm("⚠️  Ini akan mengirim WhatsApp ke {$phone}. Lanjutkan?", true)) {

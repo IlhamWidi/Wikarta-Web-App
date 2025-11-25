@@ -132,7 +132,7 @@ export default function Packages() {
                 <div className="max-w-7xl mx-auto">
                     <div className="mb-8">
                         <h1 className="text-3xl font-bold text-gray-900 mb-2">Internet Packages</h1>
-                        <p className="text-gray-600">Kelola paket internet Agus Provider</p>
+                        <p className="text-gray-600">Kelola paket internet Wikarta</p>
                     </div>
 
                 {/* Action Bar */}

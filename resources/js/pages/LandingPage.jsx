@@ -75,7 +75,7 @@ export default function LandingPage() {
                         <div className="flex items-center space-x-2">
                             <CloudIcon className="h-8 w-8 text-blue-600" />
                             <span className="text-2xl font-bold bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">
-                                Agus Provider
+                                Wikarta
                             </span>
                         </div>
                         <div className="hidden md:flex space-x-8">
@@ -258,7 +258,7 @@ export default function LandingPage() {
                     <div className="flex items-center justify-center space-x-2 mb-4">
                         <CloudIcon className="h-8 w-8 text-blue-600" />
                         <span className="text-2xl font-bold bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">
-                            Agus Provider
+                            Wikarta
                         </span>
                     </div>
                     <p className="text-gray-600 mb-4">
@@ -270,7 +270,7 @@ export default function LandingPage() {
                         <a href="#" className="text-gray-600 hover:text-blue-600 transition">Twitter</a>
                     </div>
                     <p className="text-gray-500 text-sm">
-                        © 2025 Agus Provider. All rights reserved.
+                        © 2025 Wikarta. All rights reserved.
                     </p>
                 </div>
             </footer>
