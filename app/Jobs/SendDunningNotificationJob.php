@@ -55,7 +55,7 @@ class SendDunningNotificationJob implements ShouldQueue
             . "Jika Anda sudah melakukan pembayaran, abaikan pesan ini.\n"
             . "Terima kasih atas kerja sama dan kepercayaannya.\n\n"
             . "Salam,\n"
-            . "Tim Wikarta";
+            . "Tim Wikarta Provider";
 
         $log = NotificationLog::create([
             'notification_id' => $this->invoice->id,

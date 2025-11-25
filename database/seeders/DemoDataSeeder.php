@@ -27,8 +27,8 @@ class DemoDataSeeder extends Seeder
         $this->command->info('🌱 Seeding demo data...');
 
         // Get users
-        $admin = User::where('email', 'admin@wikarta.com')->first();
-        $teknisi = User::where('email', 'teknisi@wikarta.com')->first();
+        $admin = User::where('email', 'admin@agusprovider.com')->first();
+        $teknisi = User::where('email', 'teknisi@agusprovider.com')->first();
 
         // 1. Create Packages (6 packages)
         $this->command->info('📦 Creating packages...');
@@ -326,7 +326,7 @@ class DemoDataSeeder extends Seeder
         CmsPage::create([
             'title' => 'Tentang Kami',
             'slug' => 'tentang-kami',
-            'content' => '<h1>Tentang Wikarta</h1><p>Kami adalah penyedia layanan internet terpercaya sejak 2020...</p>',
+            'content' => '<h1>Tentang Agus Provider</h1><p>Kami adalah penyedia layanan internet terpercaya sejak 2020...</p>',
             'status' => 'published',
             'published_at' => Carbon::now()->subMonths(6),
         ]);

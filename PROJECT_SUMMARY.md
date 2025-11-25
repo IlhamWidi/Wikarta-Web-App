@@ -1,8 +1,8 @@
-# 🎉 Wikarta ISP Management System - Completed!
+# 🎉 Agus Provider ISP Management System - Completed!
 
 ## ✅ Implementation Summary
 
-Sistem manajemen ISP untuk Wikarta telah berhasil diimplementasikan dengan lengkap! Berikut ringkasan pencapaian:
+Sistem manajemen ISP untuk Agus Provider telah berhasil diimplementasikan dengan lengkap! Berikut ringkasan pencapaian:
 
 ### 1. Backend - Laravel 12 (✅ 100% Complete)
 
@@ -99,13 +99,13 @@ MIDTRANS_IS_SANDBOX=false
 ### 5. Additional Services
 
 - **WhatsApp**: 085707211646 (for notification gateway)
-- **Database**: MySQL (`wikarta`)
+- **Database**: MySQL (`agusprovider`)
 - **RBAC**: 4 roles (Admin, Finance, Marketing, Teknisi)
 - **Demo Users**:
-  - admin@wikarta.com / password
-  - finance@wikarta.com / password
-  - marketing@wikarta.com / password
-  - teknisi@wikarta.com / password
+  - admin@agusprovider.com / password
+  - finance@agusprovider.com / password
+  - marketing@agusprovider.com / password
+  - teknisi@agusprovider.com / password
 
 ---
 
@@ -137,7 +137,7 @@ php artisan key:generate
 DB_CONNECTION=mysql
 DB_HOST=127.0.0.1
 DB_PORT=3306
-DB_DATABASE=wikarta
+DB_DATABASE=agusprovider
 DB_USERNAME=root
 DB_PASSWORD=your_password
 ```
@@ -178,10 +178,10 @@ php artisan serve
 
 | Role | Email | Password |
 |------|-------|----------|
-| Admin | admin@wikarta.com | password |
-| Finance | finance@wikarta.com | password |
-| Marketing | marketing@wikarta.com | password |
-| Teknisi | teknisi@wikarta.com | password |
+| Admin | admin@agusprovider.com | password |
+| Finance | finance@agusprovider.com | password |
+| Marketing | marketing@agusprovider.com | password |
+| Teknisi | teknisi@agusprovider.com | password |
 
 ---
 
@@ -371,7 +371,7 @@ php artisan test --filter CustomerTest
 
 ## 📄 License
 
-Proprietary - Wikarta © 2025
+Proprietary - Agus Provider © 2025
 
 ---
 

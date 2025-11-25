@@ -13,7 +13,7 @@ class UserSeeder extends Seeder
         // Create Superuser
         $superuser = User::create([
             'name' => 'Super Admin',
-            'email' => 'admin@wikarta.com',
+            'email' => 'admin@agusprovider.com',
             'phone' => '081234567890',
             'password' => Hash::make('password'),
             'is_active' => true,
@@ -23,7 +23,7 @@ class UserSeeder extends Seeder
         // Create Keuangan User
         $keuangan = User::create([
             'name' => 'Finance Manager',
-            'email' => 'finance@wikarta.com',
+            'email' => 'finance@agusprovider.com',
             'phone' => '081234567891',
             'password' => Hash::make('password'),
             'is_active' => true,
@@ -33,7 +33,7 @@ class UserSeeder extends Seeder
         // Create Marketing User
         $marketing = User::create([
             'name' => 'Marketing Manager',
-            'email' => 'marketing@wikarta.com',
+            'email' => 'marketing@agusprovider.com',
             'phone' => '081234567892',
             'password' => Hash::make('password'),
             'is_active' => true,
@@ -43,7 +43,7 @@ class UserSeeder extends Seeder
         // Create Teknisi User
         $teknisi = User::create([
             'name' => 'Technician',
-            'email' => 'teknisi@wikarta.com',
+            'email' => 'teknisi@agusprovider.com',
             'phone' => '081234567893',
             'password' => Hash::make('password'),
             'is_active' => true,
