@@ -79,9 +79,9 @@ Sistem manajemen ISP untuk Agus Provider telah berhasil diimplementasikan dengan
 
 #### Production Credentials Configured
 ```env
-MIDTRANS_SERVER_KEY=Mid-server-d8f4qnqbHfjpMkv8NCDqS3HF
-MIDTRANS_CLIENT_KEY=Mid-client-1gUZbLKbO6WymFSh
-MIDTRANS_MERCHANT_ID=G314938192
+MIDTRANS_SERVER_KEY=your_midtrans_server_key
+MIDTRANS_CLIENT_KEY=your_midtrans_client_key
+MIDTRANS_MERCHANT_ID=your_merchant_id
 MIDTRANS_IS_SANDBOX=false
 ```
 
@@ -144,9 +144,9 @@ DB_PASSWORD=your_password
 
 4. **Configure Midtrans** (.env)
 ```env
-MIDTRANS_SERVER_KEY=Mid-server-d8f4qnqbHfjpMkv8NCDqS3HF
-MIDTRANS_CLIENT_KEY=Mid-client-1gUZbLKbO6WymFSh
-MIDTRANS_MERCHANT_ID=G314938192
+MIDTRANS_SERVER_KEY=your_midtrans_server_key
+MIDTRANS_CLIENT_KEY=your_midtrans_client_key
+MIDTRANS_MERCHANT_ID=your_merchant_id
 MIDTRANS_IS_SANDBOX=false
 ```
 
