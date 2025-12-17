@@ -4,6 +4,7 @@ import { createRoot } from 'react-dom/client';
 import { BrowserRouter } from 'react-router-dom';
 import { Routes, Route } from 'react-router-dom';
 import { Toaster } from 'react-hot-toast';
+import ErrorBoundary from './components/ErrorBoundary';
 import LandingPage from './pages/LandingPage';
 import Login from './pages/Auth/Login';
 import Register from './pages/Auth/Register';
@@ -137,11 +138,18 @@ function App() {
 }
 
 // Mount React app
-const root = createRoot(document.getElementById('app'));
-root.render(
-    <React.StrictMode>
-        <BrowserRouter>
-            <App />
-        </BrowserRouter>
-    </React.StrictMode>
-);
+const rootElement = document.getElementById('app');
+if (rootElement) {
+    const root = createRoot(rootElement);
+    root.render(
+        <React.StrictMode>
+            <ErrorBoundary>
+                <BrowserRouter>
+                    <App />
+                </BrowserRouter>
+            </ErrorBoundary>
+        </React.StrictMode>
+    );
+} else {
+    console.error('Root element with id "app" not found');
+}

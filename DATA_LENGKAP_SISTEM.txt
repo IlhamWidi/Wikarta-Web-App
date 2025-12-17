@@ -1,0 +1,542 @@
+================================================================================
+              WIKARTA PROVIDER - DATA LENGKAP SISTEM
+                   Generated: December 8, 2025
+================================================================================
+
+DAFTAR ISI:
+-----------
+1. DATA PENGGUNA STAFF (USERS)
+2. DATA CUSTOMER/PELANGGAN
+3. DATA PAKET INTERNET
+4. DATA PROMO/GIVEAWAY
+5. INFORMASI PENTING
+
+================================================================================
+BAGIAN 1: DATA PENGGUNA STAFF (USERS)
+================================================================================
+
+Password Default Semua User: password
+(WAJIB DIUBAH SETELAH LOGIN PERTAMA!)
+
+--------------------------------------------------------------------------------
+USER 1 - SUPER ADMIN
+--------------------------------------------------------------------------------
+Nama Lengkap    : Super Admin
+Email           : admin@agusprovider.com
+No. Telepon     : 081234567890
+Role/Jabatan    : Superuser (Administrator Sistem)
+Status          : Aktif
+Password        : password
+
+Hak Akses:
+✓ Akses penuh ke semua fitur sistem
+✓ Mengelola users, roles, dan permissions
+✓ Mengelola customer, invoice, payment
+✓ Mengelola paket, promo, dan konten website
+✓ Melihat semua laporan dan audit logs
+
+--------------------------------------------------------------------------------
+USER 2 - FINANCE MANAGER
+--------------------------------------------------------------------------------
+Nama Lengkap    : Finance Manager
+Email           : finance@agusprovider.com
+No. Telepon     : 081234567891
+Role/Jabatan    : Keuangan (Manajer Keuangan)
+Status          : Aktif
+Password        : password
+
+Hak Akses:
+✓ Melihat data customer
+✓ Mengelola invoice (create, edit, void)
+✓ Mengelola pembayaran
+✓ Verifikasi pembayaran customer
+✓ Rekonsiliasi keuangan
+✓ Approve refund dan void invoice
+✓ Melihat laporan keuangan
+✓ Handle support tickets
+✓ Melihat audit logs
+
+--------------------------------------------------------------------------------
+USER 3 - MARKETING MANAGER
+--------------------------------------------------------------------------------
+Nama Lengkap    : Marketing Manager
+Email           : marketing@agusprovider.com
+No. Telepon     : 081234567892
+Role/Jabatan    : Marketing (Manajer Marketing)
+Status          : Aktif
+Password        : password
+
+Hak Akses:
+✓ Mengelola customer (create, edit, delete)
+✓ Mengelola paket internet
+✓ Melihat invoice dan payment
+✓ Mengelola promo dan giveaway
+✓ Mengelola konten CMS website
+✓ Handle support tickets
+✓ Create dan edit tickets
+
+--------------------------------------------------------------------------------
+USER 4 - TECHNICIAN
+--------------------------------------------------------------------------------
+Nama Lengkap    : Technician
+Email           : teknisi@agusprovider.com
+No. Telepon     : 081234567893
+Role/Jabatan    : Teknisi (Teknisi Lapangan)
+Status          : Aktif
+Password        : password
+
+Hak Akses:
+✓ Melihat data customer
+✓ Mengelola instalasi pelanggan
+✓ Handle support tickets teknis
+✓ Create, edit, assign, resolve tickets
+✓ Input absensi harian
+✓ Mark attendance
+
+
+================================================================================
+BAGIAN 2: DATA CUSTOMER/PELANGGAN
+================================================================================
+
+CATATAN: Data di bawah ini adalah contoh pola customer yang akan digenerate
+         oleh sistem saat seeding. Total: 100 customers
+
+Format Customer Code: CUST-XXXXX (contoh: CUST-00001, CUST-00002, dst)
+
+--------------------------------------------------------------------------------
+POLA NAMA CUSTOMER (20 Nama Dasar + Suffix Alphabet)
+--------------------------------------------------------------------------------
+1. Budi Santoso [A-Z]
+2. Siti Nurhaliza [A-Z]
+3. Ahmad Yani [A-Z]
+4. Dewi Lestari [A-Z]
+5. Agus Salim [A-Z]
+6. Rina Wijaya [A-Z]
+7. Bambang Susilo [A-Z]
+8. Maya Sari [A-Z]
+9. Hendro Gunawan [A-Z]
+10. Lina Marlina [A-Z]
+11. Rudi Hartono [A-Z]
+12. Sri Mulyani [A-Z]
+13. Eko Prasetyo [A-Z]
+14. Indah Permata [A-Z]
+15. Yudi Setiawan [A-Z]
+16. Nina Wulandari [A-Z]
+17. Faisal Rahman [A-Z]
+18. Eka Putri [A-Z]
+19. Dimas Pratama [A-Z]
+20. Ani Susilowati [A-Z]
+
+Contoh Customer:
+- CUST-00001: Budi Santoso A
+- CUST-00002: Siti Nurhaliza B
+- CUST-00003: Ahmad Yani C
+- ... dst hingga 100 customer
+
+--------------------------------------------------------------------------------
+AREA COVERAGE (Wilayah Layanan)
+--------------------------------------------------------------------------------
+✓ Jakarta Selatan
+✓ Jakarta Utara
+✓ Jakarta Barat
+✓ Jakarta Timur
+✓ Jakarta Pusat
+✓ Tangerang
+✓ Bekasi
+✓ Depok
+✓ Bogor
+
+--------------------------------------------------------------------------------
+JALAN/LOKASI YANG DILAYANI
+--------------------------------------------------------------------------------
+✓ Jl. Sudirman
+✓ Jl. Thamrin
+✓ Jl. Gatot Subroto
+✓ Jl. Kuningan
+✓ Jl. TB Simatupang
+✓ Jl. Rasuna Said
+
+Contoh Alamat Lengkap:
+- Jl. Sudirman No. 45, Jakarta Selatan
+- Jl. Thamrin No. 123, Jakarta Pusat
+- Jl. Gatot Subroto No. 78, Jakarta Selatan
+
+--------------------------------------------------------------------------------
+FORMAT DATA CUSTOMER
+--------------------------------------------------------------------------------
+Customer Code   : CUST-00001 sampai CUST-00100
+Nama            : [Nama Indonesia] + [Suffix A-Z]
+Email           : customer1@example.com sampai customer100@example.com
+No. Telepon     : 08xxxxxxxxxx (random 10 digit)
+Alamat          : [Jalan] No. [1-200], [Area]
+Koordinat       : Latitude/Longitude wilayah Jakarta
+Status          : 
+  - active (90% customer)
+  - suspended (10% customer)
+
+--------------------------------------------------------------------------------
+STATISTIK CUSTOMER
+--------------------------------------------------------------------------------
+Total Customer       : 100 customer
+Active               : ~90 customer (90%)
+Suspended            : ~10 customer (10%)
+Punya Subscription   : ~80 customer (80%)
+Tidak Subscription   : ~20 customer (20%)
+Ada Support Ticket   : ~50 customer (50%)
+Ada Instalasi        : ~33 customer (33%)
+
+
+================================================================================
+BAGIAN 3: DATA PAKET INTERNET
+================================================================================
+
+TOTAL: 6 PAKET INTERNET
+
+--------------------------------------------------------------------------------
+PAKET 1: PAKET LITE 5 MBPS
+--------------------------------------------------------------------------------
+Kode Paket      : lite-5mbps
+Kecepatan       : 5 Mbps (download/upload)
+Harga Bulanan   : Rp 99.000
+Biaya Instalasi : Rp 200.000
+Kuota           : Unlimited
+Periode         : Monthly (1 bulan)
+Status          : Active
+Featured        : No
+
+Fitur:
+✓ 5 Mbps download/upload
+✓ Unlimited quota
+✓ Free instalasi*
+✓ Standard support
+
+Target: Pengguna internet ringan (browsing, social media)
+
+--------------------------------------------------------------------------------
+PAKET 2: PAKET BASIC 10 MBPS
+--------------------------------------------------------------------------------
+Kode Paket      : basic-10mbps
+Kecepatan       : 10 Mbps (download/upload)
+Harga Bulanan   : Rp 150.000
+Biaya Instalasi : Rp 250.000
+Kuota           : Unlimited
+Periode         : Monthly (1 bulan)
+Status          : Active
+Featured        : No
+
+Fitur:
+✓ 10 Mbps download/upload
+✓ Unlimited quota
+✓ Free instalasi*
+✓ 24/7 support
+
+Target: Kebutuhan browsing dan streaming standar
+
+--------------------------------------------------------------------------------
+PAKET 3: PAKET PREMIUM 20 MBPS ⭐ (FEATURED)
+--------------------------------------------------------------------------------
+Kode Paket      : premium-20mbps
+Kecepatan       : 20 Mbps (download/upload)
+Harga Bulanan   : Rp 250.000
+Biaya Instalasi : Rp 250.000
+Kuota           : Unlimited
+Periode         : Monthly (1 bulan)
+Status          : Active
+Featured        : Yes ⭐
+
+Fitur:
+✓ 20 Mbps download/upload
+✓ Unlimited quota
+✓ Free instalasi*
+✓ Priority support
+✓ Free router
+
+Target: Keluarga dengan banyak device
+
+--------------------------------------------------------------------------------
+PAKET 4: PAKET ULTRA 50 MBPS ⭐ (FEATURED)
+--------------------------------------------------------------------------------
+Kode Paket      : ultra-50mbps
+Kecepatan       : 50 Mbps (download/upload)
+Harga Bulanan   : Rp 400.000
+Biaya Instalasi : Rp 300.000
+Kuota           : Unlimited
+Periode         : Monthly (1 bulan)
+Status          : Active
+Featured        : Yes ⭐
+
+Fitur:
+✓ 50 Mbps download/upload
+✓ Unlimited quota
+✓ Free instalasi*
+✓ VIP support
+✓ Free premium router
+✓ Static IP
+
+Target: Gaming dan streaming 4K
+
+--------------------------------------------------------------------------------
+PAKET 5: PAKET GAMING 75 MBPS
+--------------------------------------------------------------------------------
+Kode Paket      : gaming-75mbps
+Kecepatan       : 75 Mbps (download/upload)
+Harga Bulanan   : Rp 550.000
+Biaya Instalasi : Rp 300.000
+Kuota           : Unlimited
+Periode         : Monthly (1 bulan)
+Status          : Active
+Featured        : No
+
+Fitur:
+✓ 75 Mbps download/upload
+✓ Unlimited quota
+✓ Low latency
+✓ Gaming VPN
+✓ Free premium router
+✓ Priority routing
+
+Target: Gamer profesional dan esports
+
+--------------------------------------------------------------------------------
+PAKET 6: PAKET BUSINESS 100 MBPS ⭐ (FEATURED)
+--------------------------------------------------------------------------------
+Kode Paket      : business-100mbps
+Kecepatan       : 100 Mbps (dedicated)
+Harga Bulanan   : Rp 750.000
+Biaya Instalasi : Rp 500.000
+Kuota           : Unlimited
+Periode         : Monthly (1 bulan)
+Status          : Active
+Featured        : Yes ⭐
+
+Fitur:
+✓ 100 Mbps dedicated
+✓ Unlimited quota
+✓ Free instalasi
+✓ Dedicated support
+✓ Static IP
+✓ SLA 99.9%
+
+Target: Kebutuhan bisnis dan kantor
+
+
+================================================================================
+BAGIAN 4: DATA PROMO/GIVEAWAY
+================================================================================
+
+TOTAL: 2 PROMO AKTIF
+
+--------------------------------------------------------------------------------
+PROMO 1: DISKON 50% PELANGGAN BARU
+--------------------------------------------------------------------------------
+Kode Promo      : DISC50NEW
+Nama Promo      : Diskon 50% untuk Pelanggan Baru
+Tipe            : Discount
+Nilai Diskon    : 50%
+Deskripsi       : Dapatkan diskon 50% untuk 3 bulan pertama! 
+                  Promo terbatas!
+Kuota Total     : 100 customer
+Kuota Terpakai  : 45 customer
+Sisa Kuota      : 55 customer
+Masa Berlaku    : 30 hari dari tanggal dibuat
+Status          : Active ✓
+
+Cara Pakai:
+1. Daftar sebagai pelanggan baru
+2. Masukkan kode promo DISC50NEW saat registrasi
+3. Diskon otomatis diterapkan di invoice
+4. Berlaku untuk 3 bulan pertama
+
+--------------------------------------------------------------------------------
+PROMO 2: GRATIS INSTALASI
+--------------------------------------------------------------------------------
+Kode Promo      : FREEINSTALL
+Nama Promo      : Gratis Instalasi - Promo Akhir Tahun
+Tipe            : Other (Free Installation)
+Nilai Diskon    : Gratis biaya instalasi
+Deskripsi       : Gratis biaya instalasi untuk semua paket! 
+                  Buruan daftar!
+Kuota Total     : 50 customer
+Kuota Terpakai  : 12 customer
+Sisa Kuota      : 38 customer
+Masa Berlaku    : 30 hari dari tanggal dibuat
+Status          : Active ✓
+
+Cara Pakai:
+1. Pilih paket internet yang diinginkan
+2. Masukkan kode promo FREEINSTALL
+3. Biaya instalasi menjadi Rp 0
+4. Berlaku untuk semua paket
+
+
+================================================================================
+BAGIAN 5: INFORMASI PENTING
+================================================================================
+
+--------------------------------------------------------------------------------
+KEAMANAN AKUN
+--------------------------------------------------------------------------------
+⚠️ WAJIB DILAKUKAN:
+1. Ubah password default setelah login pertama kali
+2. Gunakan password kuat (min. 12 karakter)
+3. Kombinasikan huruf besar, kecil, angka, dan simbol
+4. Jangan bagikan password ke siapapun
+5. Logout setelah selesai menggunakan sistem
+
+❌ JANGAN:
+- Login dari komputer publik/warnet
+- Simpan password di browser
+- Bagikan akun ke orang lain
+- Gunakan password yang sama dengan akun lain
+
+--------------------------------------------------------------------------------
+CARA LOGIN SISTEM
+--------------------------------------------------------------------------------
+1. Buka browser (Chrome, Firefox, Edge)
+2. Ketik alamat: http://localhost (atau sesuai URL production)
+3. Klik "Login" di pojok kanan atas
+4. Masukkan email dan password
+5. Klik "Masuk"
+
+Untuk Staff: Gunakan email @agusprovider.com
+Untuk Customer: Gunakan email customer yang terdaftar
+
+--------------------------------------------------------------------------------
+CARA UBAH PASSWORD
+--------------------------------------------------------------------------------
+1. Login ke sistem
+2. Klik nama/avatar di pojok kanan atas
+3. Pilih "Pengaturan" atau "Profil"
+4. Klik "Ubah Password"
+5. Masukkan password lama
+6. Masukkan password baru (2x untuk konfirmasi)
+7. Klik "Simpan"
+
+--------------------------------------------------------------------------------
+LUPA PASSWORD
+--------------------------------------------------------------------------------
+1. Di halaman login, klik "Lupa Password?"
+2. Masukkan email terdaftar
+3. Cek email untuk link reset password
+4. Klik link di email
+5. Masukkan password baru
+6. Login dengan password baru
+
+Atau hubungi:
+- Super Admin: admin@agusprovider.com
+- WhatsApp: 081234567890
+
+--------------------------------------------------------------------------------
+CONTACT SUPPORT
+--------------------------------------------------------------------------------
+Email Support   : admin@agusprovider.com
+WhatsApp        : 081234567890
+Jam Operasional : Senin - Jumat, 08:00 - 17:00 WIB
+                  Sabtu, 08:00 - 12:00 WIB
+                  Minggu & Libur Nasional: Tutup
+
+Untuk Emergency 24/7:
+WhatsApp: 081234567890 (balas otomatis)
+
+--------------------------------------------------------------------------------
+KATEGORI SUPPORT TICKET
+--------------------------------------------------------------------------------
+✓ Internet lambat
+✓ Koneksi terputus-putus
+✓ Tidak bisa akses website tertentu
+✓ Request ubah paket
+✓ Billing issue / masalah pembayaran
+✓ Router mati / tidak berfungsi
+✓ Minta teknisi datang
+✓ Gangguan total
+✓ Pertanyaan umum
+
+--------------------------------------------------------------------------------
+METODE PEMBAYARAN
+--------------------------------------------------------------------------------
+✓ Bank Transfer (Manual)
+✓ Virtual Account (Otomatis)
+✓ QRIS (Scan & Pay)
+✓ Credit Card
+✓ E-Wallet (GoPay, OVO, DANA, dll)
+✓ Cash (di kantor)
+
+Pembayaran via Midtrans Payment Gateway
+Otomatis terverifikasi dalam 1-5 menit
+
+--------------------------------------------------------------------------------
+INFORMASI TEKNIS
+--------------------------------------------------------------------------------
+Sistem          : Wikarta Provider ISP Management
+Version         : 1.0
+Backend         : Laravel 12 (PHP 8.2+)
+Frontend        : React 19.2.0
+Database        : MySQL 8.0+
+Payment Gateway : Midtrans
+WhatsApp API    : Fonnte
+Email Service   : SMTP
+
+Timezone        : Asia/Jakarta (WIB)
+Currency        : Indonesian Rupiah (IDR/Rp)
+Date Format     : DD/MM/YYYY
+Time Format     : 24 Hours (HH:MM)
+
+
+================================================================================
+MAINTENANCE & BACKUP
+================================================================================
+
+📅 Backup Otomatis:
+- Database: Setiap hari pukul 02:00 WIB
+- Files: Setiap minggu (Minggu, 03:00 WIB)
+- Retention: 30 hari
+
+🔧 Maintenance Terjadwal:
+- Setiap hari Minggu, 01:00 - 04:00 WIB
+- Sistem mungkin tidak dapat diakses
+- Notifikasi akan dikirim 24 jam sebelumnya
+
+⚡ Dunning Notification:
+- Otomatis kirim reminder H-7 sebelum jatuh tempo
+- Kirim via email dan WhatsApp
+- Cron job berjalan setiap hari pukul 09:00 WIB
+
+
+================================================================================
+PERUBAHAN DAN UPDATE
+================================================================================
+
+📋 Change Log:
+Version 1.0 (8 Desember 2025)
+- Initial release
+- Full ISP management system
+- Customer, Invoice, Payment management
+- Support ticket system
+- Installation tracking
+- Promo/Giveaway system
+- CMS pages
+- Audit logs
+- Midtrans payment integration
+- WhatsApp notification
+- Email notification
+
+🔮 Upcoming Features:
+- Mobile app (Android & iOS)
+- Customer self-service portal
+- Real-time monitoring dashboard
+- Bandwidth management
+- Auto-suspend for overdue customers
+- SMS notification
+- Multi-language support
+
+
+================================================================================
+END OF DOCUMENT
+Generated: December 8, 2025
+File: DATA_LENGKAP_SISTEM.txt
+================================================================================
+
+DISCLAIMER:
+Data dalam dokumen ini adalah struktur dan pola data dari sistem.
+Untuk data aktual, silakan cek langsung di database atau dashboard admin.
+Jangan bagikan file ini ke pihak yang tidak berwenang.

@@ -71,9 +71,9 @@ class MidtransService
                 'email' => $customer->email,
                 'phone' => $customer->phone,
                 'billing_address' => [
-                    'address' => $customer->address,
-                    'city' => 'Jakarta', // Could be extracted from customer data
-                    'postal_code' => '12345',
+                    'address' => $customer->address ?: config('services.midtrans.default_address', 'N/A'),
+                    'city' => $customer->city ?: config('services.midtrans.default_city', 'Jakarta'),
+                    'postal_code' => $customer->postal_code ?: config('services.midtrans.default_postal_code', '10110'),
                     'country_code' => 'IDN',
                 ],
             ];

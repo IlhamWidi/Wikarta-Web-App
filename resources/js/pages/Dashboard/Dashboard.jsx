@@ -26,16 +26,22 @@ export default function Dashboard() {
     const fetchStats = async () => {
         setLoading(true);
         try {
-            // Fetch statistics from API
-            // For now, using placeholder data
+            const response = await api.get('/dashboard/stats');
             setStats({
-                totalCustomers: 1250,
-                totalRevenue: 125000000,
-                pendingInvoices: 45,
-                paidInvoices: 890,
+                totalCustomers: response.data.totalCustomers || 0,
+                totalRevenue: response.data.totalRevenue || 0,
+                pendingInvoices: response.data.pendingInvoices || 0,
+                paidInvoices: response.data.paidInvoices || 0,
             });
         } catch (error) {
             console.error('Failed to fetch stats:', error);
+            // Keep default values on error
+            setStats({
+                totalCustomers: 0,
+                totalRevenue: 0,
+                pendingInvoices: 0,
+                paidInvoices: 0,
+            });
         } finally {
             setLoading(false);
         }

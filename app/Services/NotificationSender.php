@@ -56,22 +56,19 @@ class NotificationSender
             'countryCode' => '62',
         ]);
 
-        $responseData = $response->json();
-        
-        // Check Fonnte-specific status field
-        if ($response->failed() || (isset($responseData['status']) && $responseData['status'] === false)) {
-            $error = $responseData['reason'] ?? $response->body();
+        if ($response->failed()) {
+            $error = $response->json('reason') ?? $response->body();
             Log::warning('WhatsApp notification failed', [
                 'number' => $number, 
                 'error' => $error,
-                'response' => $responseData
+                'response' => $response->json()
             ]);
             return false;
         }
 
         Log::info('WhatsApp notification sent successfully', [
             'number' => $number,
-            'response' => $responseData
+            'response' => $response->json()
         ]);
 
         return true;

@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\CustomerController;
+use App\Http\Controllers\Api\DashboardController;
 use App\Http\Controllers\Api\PackageController;
 use App\Http\Controllers\Api\InvoiceController;
 use App\Http\Controllers\Api\PaymentController;
@@ -32,7 +33,11 @@ Route::post('/webhook/midtrans', [WebhookController::class, 'midtrans']);
 Route::get('/packages/public', [PackageController::class, 'publicIndex']);
 
 // Protected routes
-Route::middleware('auth:sanctum')->group(function () {
+Route::middleware(['auth:sanctum', 'throttle:60,1'])->group(function () {
+    // Dashboard
+    Route::get('/dashboard/stats', [DashboardController::class, 'stats']);
+    Route::get('/dashboard/recent-activity', [DashboardController::class, 'recentActivity']);
+    
     // Customers
     Route::apiResource('customers', CustomerController::class);
     

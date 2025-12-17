@@ -1,0 +1,108 @@
+================================================================================
+              WIKARTA PROVIDER - DATA PENGGUNA SISTEM
+                   Generated: December 8, 2025
+================================================================================
+
+CATATAN: Data ini adalah data default dari seeder. 
+         Password untuk semua user: password
+         Silakan ubah password setelah login pertama kali.
+
+================================================================================
+
+USER 1
+------
+Nama Lengkap    : Super Admin
+Email           : admin@agusprovider.com
+No. Telepon     : 081234567890
+Role            : superuser (Administrator Sistem)
+Status          : Aktif
+Password        : password
+
+Deskripsi Role:
+- Akses penuh ke semua fitur sistem
+- Dapat mengelola users, roles, dan permissions
+- Akses ke semua modul (Customer, Invoice, Payment, Ticket, dll)
+
+================================================================================
+
+USER 2
+------
+Nama Lengkap    : Ayu Maylanie
+Email           : finance@agusprovider.com
+No. Telepon     : 081234567891
+Role            : keuangan (Manajer Keuangan)
+Status          : Aktif
+Password        : password
+
+Deskripsi Role:
+- Mengelola invoice dan pembayaran
+- Verifikasi pembayaran customer
+- Rekonsiliasi keuangan
+- Approve refund dan void invoice
+- Lihat laporan keuangan
+
+================================================================================
+
+USER 3
+------
+Nama Lengkap    : Budi Wahyudi
+Email           : marketing@agusprovider.com
+No. Telepon     : 081234567892
+Role            : marketing (Manajer Marketing)
+Status          : Aktif
+Password        : password
+
+Deskripsi Role:
+- Mengelola customer dan data pelanggan
+- Mengelola paket internet
+- Mengelola promo dan giveaway
+- Mengelola konten CMS website
+- Handle support tickets
+
+================================================================================
+
+USER 4
+------
+Nama Lengkap    : Ridho Aji
+Email           : teknisi@agusprovider.com
+No. Telepon     : 081234567893
+Role            : teknisi (Teknisi Lapangan)
+Status          : Aktif
+Password        : password
+
+Deskripsi Role:
+- Mengelola instalasi pelanggan
+- Handle support tickets teknis
+- Input absensi harian
+- Lihat data customer untuk instalasi
+
+================================================================================
+
+INFORMASI TAMBAHAN
+------------------
+
+Cara Login:
+1. Buka aplikasi di browser
+2. Masuk ke halaman login
+3. Gunakan email dan password dari data di atas
+4. Setelah login pertama kali, segera ubah password
+
+Cara Ubah Password:
+1. Login ke sistem
+2. Klik profil di pojok kanan atas
+3. Pilih "Ubah Password"
+4. Masukkan password lama dan password baru
+5. Simpan perubahan
+
+Keamanan:
+- JANGAN BAGIKAN password ke siapapun
+- WAJIB ubah password default setelah login pertama
+- Gunakan password yang kuat (min. 12 karakter, kombinasi huruf, angka, simbol)
+- Logout setelah selesai menggunakan sistem
+- Jangan login dari komputer publik
+
+Contact Administrator:
+Jika ada masalah dengan akun atau lupa password, hubungi:
+- Super Admin: admin@agusprovider.com / 081234567890
+
+================================================================================
